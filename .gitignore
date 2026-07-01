@@ -1,0 +1,43 @@
+# --- Virtual environments ---
+diageo_env/
+.venv/
+venv/
+env/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# --- Video source + clips (large binaries — never commit) ---
+*.ts
+*.mp4
+*.avi
+*.mkv
+*.mov
+*.webm
+
+# --- Generated pipeline outputs / artefacts ---
+AnomalyDetection/anomaly_out/
+ShrinkWrapClassificationTiltMeasurement/phase_pipeline_out/
+output/
+*.zip
+
+# NOTE: phase_anchor_41884872.png is intentionally NOT ignored — the anomaly
+# script needs it, so it is tracked (only ~1.8 MB).
+
+# --- DataFiles ---
+docs/tasks/*
+*.csv
+*.pdf
+*.json
+
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+*.swp

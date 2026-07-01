@@ -1,0 +1,19 @@
+# PLC-over-Ethernet kernel (plc_comms.py) — only runtime dependency.
+# Everything else it uses (logging, math, struct, itertools, typing) is stdlib.
+python-snap7>=2.0.0
+
+# VideoModule (CV/ML toolkit: phase-aware anomaly detection, embeddings, OCR, ...).
+# Pinned to a fixed commit for repeatability — a bare branch ref would drift.
+# To update: bump the SHA below (or, once the 24H repo is tagged, use @v2.4.0).
+# For side-by-side dev on both repos instead, use an editable local install:
+#   pip install -e C:/Users/jkind/Documents/McLaren/24H_Insights
+videomodule @ git+https://github.com/Purple-Sector/24H_Insights.git@513c0914c2175a501412b6fd166f610ba023fd73
+
+# Undeclared transitive dep of videomodule: it hard-imports hdbscan via
+# statistical_analysis.clustering, but its pyproject.toml doesn't list it. Pin here so the
+# env resolves. Ideally add hdbscan to videomodule's dependencies upstream and drop this.
+hdbscan>=0.8.40
+
+# S3 mode (run_s3_anomaly_detection) — videomodule lazy-imports boto3 in parallel_io, so
+# folder mode works without it, but the S3 pipeline needs it. Also undeclared upstream.
+boto3>=1.34
