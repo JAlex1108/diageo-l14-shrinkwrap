@@ -1,0 +1,9 @@
+metric,value
+harford_time_offset,0 minutes
+shared_window_start,2026-06-18 22:11:06.834444444
+shared_window_end,2026-06-20 08:05:57.833333333
+harford_duration_column,Time.1
+harford_duration_windows_plotted,86
+extracted_stop_starts_checked,257
+extracted_stop_starts_inside_harford_duration,33
+unique_harford_stops_containing_extracted_start,20

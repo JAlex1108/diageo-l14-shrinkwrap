@@ -1,19 +1,201 @@
-# PLC-over-Ethernet kernel (plc_comms.py) — only runtime dependency.
-# Everything else it uses (logging, math, struct, itertools, typing) is stdlib.
-python-snap7>=2.0.0
+# Extra index URLs for PyTorch with CUDA 12.8 support
+--extra-index-url https://download.pytorch.org/whl/cu128
 
-# VideoModule (CV/ML toolkit: phase-aware anomaly detection, embeddings, OCR, ...).
-# Pinned to a fixed commit for repeatability — a bare branch ref would drift.
-# To update: bump the SHA below (or, once the 24H repo is tagged, use @v2.4.0).
-# For side-by-side dev on both repos instead, use an editable local install:
-#   pip install -e C:/Users/jkind/Documents/McLaren/24H_Insights
-videomodule @ git+https://github.com/Purple-Sector/24H_Insights.git@513c0914c2175a501412b6fd166f610ba023fd73
+# Core Deep Learning & Computer Vision
+torch
+torchvision
+torchaudio
+pytorch-lightning
+lightning
+lightning-utilities
+torchmetrics
 
-# Undeclared transitive dep of videomodule: it hard-imports hdbscan via
-# statistical_analysis.clustering, but its pyproject.toml doesn't list it. Pin here so the
-# env resolves. Ideally add hdbscan to videomodule's dependencies upstream and drop this.
-hdbscan>=0.8.40
+# YOLO Object Detection
+ultralytics>=8.3.0
+lapx
 
-# S3 mode (run_s3_anomaly_detection) — videomodule lazy-imports boto3 in parallel_io, so
-# folder mode works without it, but the S3 pipeline needs it. Also undeclared upstream.
-boto3>=1.34
+# SAHI & Advanced Augmentation
+sahi>=0.11.14
+pycocotools>=2.0.7
+
+# Vision & Image Processing
+opencv-python
+Pillow
+imageio
+imagecodecs
+tifffile
+scikit-image
+
+# CLIP & Vision-Language Models
+open-clip-torch
+clip
+ftfy
+
+# Anomaly Detection
+anomalib
+FrEIA
+
+# Scientific Computing
+numpy
+scipy
+pandas
+xlrd  # Required for legacy .xls audit extracts
+scikit-learn
+PyWavelets  # CWT fallback for phase detection (pure Python, no build tools needed)
+
+# Visualization
+matplotlib
+matplotlib-inline
+seaborn
+contourpy
+cycler
+kiwisolver
+fonttools
+
+# Deep Learning Utilities
+einops
+kornia
+kornia-rs
+timm
+safetensors
+hf-xet
+
+# Jupyter & Interactive Computing
+ipykernel
+ipython
+ipython-pygments-lexers
+jupyter-client
+jupyter-core
+notebook
+jupyterlab
+
+# Configuration & Parsing
+omegaconf
+PyYAML
+jsonargparse
+rich
+rich-argparse
+click
+typer-slim
+
+# Networking & HTTP
+aiohttp
+aiohappyeyeballs
+aiosignal
+requests
+urllib3
+certifi
+charset-normalizer
+idna
+httpcore
+httpx
+h11
+
+# Async & Concurrency
+anyio
+nest-asyncio
+frozenlist
+multidict
+yarl
+
+# Data Processing
+joblib
+threadpoolctl
+
+# ML Utilities
+huggingface-hub
+typeshed-client
+
+# File System & Storage
+fsspec
+filelock
+platformdirs
+
+# Utilities
+tqdm
+colorama
+wcwidth
+lazy-loader
+propcache
+stack-data
+
+# Parsing & Language Processing
+antlr4-python3-runtime
+regex
+pyparsing
+parso
+markdown-it-py
+mdurl
+docstring-parser
+
+# Development & Debugging
+debugpy
+executing
+asttokens
+pure-eval
+jedi
+decorator
+traitlets
+prompt-toolkit
+
+# System Utilities
+psutil
+setuptools
+packaging
+importlib-resources
+
+# Code Styling & Formatting
+Pygments
+
+# Date & Time
+python-dateutil
+pytz
+tzdata
+
+# Math & Symbolic Computing
+sympy
+mpmath
+networkx
+
+# Templating
+Jinja2
+MarkupSafe
+
+# Shell Utilities
+shellingham
+
+# Other
+attrs
+comm
+six
+typing-extensions
+tornado
+pyzmq
+
+# Windows-specific (conditional)
+pywin32>=308; platform_system=="Windows"
+pywinpty>=2.0.0; platform_system=="Windows"
+
+# Optional but recommended for GPU monitoring
+# nvidia-ml-py3
+
+# Optional: true-3D (CAD-style) rendering for the synthetic benchmark's site families
+# (experiments/datasets/synthetic, render="render3d"). Offscreen VTK; the default cv2 "shapes" backend
+# needs nothing extra. Uncomment to render the Diageo/Nestle/Beijing/Hangzhou scenes in 3D.
+# pyvista
+
+# Optional: Fast CWT for phase detection (requires C++ build tools)
+# If you have Visual Studio Build Tools or gcc installed, uncomment for 100-1000x speedup
+# fcwt
+
+# Optional: For AlphaCLIP (if needed, uncomment and install from git)
+# git+https://github.com/SunzeY/AlphaCLIP.git
+
+# Optional: OCR backends (none installed by default; pick what matches your hardware)
+# VideoModule.ocr.extract_text auto-detects which of these is available.
+# pip install paddlepaddle-gpu paddleocr   # GPU, highest accuracy on dense scene text
+# pip install easyocr                       # GPU via PyTorch, easier install
+# pip install pytesseract                   # CPU fallback (also requires Tesseract binary on PATH:
+#                                           #   Windows: https://github.com/UB-Mannheim/tesseract/wiki
+#                                           #   Linux:   sudo apt install tesseract-ocr
+#                                           #   macOS:   brew install tesseract )

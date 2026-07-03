@@ -1,43 +1,178 @@
-# --- Virtual environments ---
-diageo_env/
-.venv/
+# CSV files are kept local by default.
+# These four working areas are the exception because their notebooks and analyses
+# need committed CSVs alongside the code.
+*.csv
+!measurements/
+!measurements/**/*.csv
+!stop_clip_anomaly_detection/
+!stop_clip_anomaly_detection/**/*.csv
+!video_coverage_log/
+!video_coverage_log/**/*.csv
+!stoppage_detection/
+!stoppage_detection/**/*.csv
+
+# Video files stay local everywhere in the repo.
+videos/
+*.mp4
+*.ts
+*.avi
+*.mov
+*.mkv
+# Image files
+*.png
+*.jpg
+*.jpeg
+*.bmp
+
+# ...except README doc assets (committed example plots referenced from READMEs)
+!docs/
+!docs/**/*.png
+
+# Model weights and checkpoints
+models/
+*.pt
+*.pth
+*.onnx
+*.pb
+*.h5
+*.weights
+
+# Data directories
+# (the old top-level data/ = OD training output was moved to output/od_runs/ in task 65;
+#  output/ is already ignored below, so od_runs/ is covered.)
+# Generated/curated datasets (synthetic clips, diageo_cortex_worst, video sets) are
+# large, locally reproducible data — the whole tree is kept local, never committed.
+datasets/
+# MCP / tooling scratch (Playwright MCP page snapshots, etc.)
+.playwright-mcp/
+patchcore_test_videos/
+Results/
+TestData/
+output/
+# Anomaly-detection run outputs (anomaly clips/frames/grids/summaries) — derived,
+# regenerable from the pipeline; the per-run summary JSON is a local readback.
+anomaly_out/
+# Raw key-frame image captures (Hangzhou line) — image data, kept local
+Hangzou_key_frames/
+# Keyframe-extraction / reference-match script outputs (matched frames, ROI grids) —
+# derived image data, regenerable from the scripts; kept local.
+matched keyframes/
+# (the old repo-root nestle/ demo set + glass_breakage/ raw captures were moved into
+#  datasets/ in task 65 — datasets/* already ignores them there.)
+
+# Generated debug artifacts (grids, signals, scratch readbacks) — derived,
+# regenerable; the whole folder is kept local, never committed.
+debug_output/
+
+# Local experimental scratch code (not part of the shipped module)
+sandbox/
+
+# scripts/ — the local "lab bench": standalone drivers, one-off experiments, and
+# operational CLIs that sit OUTSIDE the importable VideoModule package. Kept on disk
+# (downloaders, the per-site keyframe-extraction CLIs + configs) but no longer tracked
+# — the shipped capability lives in VideoModule/ and experiments/. The synthetic-data
+# generators moved to experiments/datasets/synthetic/demo_clips/ (tracked).
+# EXCEPTION: two modules the shipped fewshot-labelling pipeline still imports
+# (encode_326_changepoint_raw + its vendored real_clip_method_compare front-end) stay
+# tracked until they are relocated into VideoModule — that edit touches pipeline files
+# currently owned by an in-flight refactor in another session. See scripts/README.md.
+scripts/
+!scripts/encoding/
+!scripts/encoding/encode_326_changepoint_raw.py
+!scripts/evaluation/
+!scripts/evaluation/real_clip_method_compare.py
+
+# (labels_processed.csv moved into datasets/video/labelled_326/ in task 65 — ignored via datasets/*)
+
+# Research corpus (literature .md files, kept local, not committed)
+research/
+
+# Training outputs
+runs/
+wandb/
+mlruns/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+24h_env/
 venv/
 env/
+ENV/
+.venv
 
-# --- Python ---
-__pycache__/
-*.py[cod]
-*.egg-info/
-.eggs/
-build/
-dist/
-.pytest_cache/
+# Jupyter
 .ipynb_checkpoints/
+*.ipynb_checkpoints
 
-# --- Video source + clips (large binaries — never commit) ---
-*.ts
-*.mp4
-*.avi
-*.mkv
-*.mov
-*.webm
-
-# --- Generated pipeline outputs / artefacts ---
-AnomalyDetection/anomaly_out/
-ShrinkWrapClassificationTiltMeasurement/phase_pipeline_out/
-output/
-*.zip
-
-# NOTE: phase_anchor_41884872.png is intentionally NOT ignored — the anomaly
-# script needs it, so it is tracked (only ~1.8 MB).
-
-# --- DataFiles ---
-docs/tasks/*
-*.csv
-*.pdf
-*.json
-
-# --- OS / editor cruft ---
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 .DS_Store
 Thumbs.db
-*.swp
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Scratch test-output dirs (debug artifacts, smoke runs, feature caches)
+VideoModule/**/tests/_*/
+tmpvsum_dl/
+
+# Scratch experiment scripts and the local annotation export (kept local)
+/scratch*.py
+/scratch*.txt
+/annotations.csv
+
+# Claude
+.claude/
+
+# Local caches (downloaded COCO negatives, feature caches) — regenerable, kept local
+.cache/
+
+# Temporary files
+*.tmp
+*.bak
+*.log
+
+# Backup directories
+*_backup*/
+VideoModule_backup*/
+*.zip
+
+# Large/derived presentation + doc binaries kept local (the source READMEs are
+# the tracked record; these are generated readbacks). Scoped narrowly so the
+# already-tracked phase_detection/README.pdf is untouched.
+VideoModule/anomaly_classification/README.pdf
+VideoModule/anomaly_classification/readback_deck.pptx
+VideoModule/pipelines/anomaly_detection/README.pdf
+experiments/paper/method_story/README.pdf
+*.pptx
+# Test for the local-only sandbox/ scratch code (sandbox is gitignored)
+VideoModule/tests/test_memory_bank_sandbox.py
+
+# Task system: local engineering-traceability working state, not shared history
+task_list/
+
+# graphify knowledge-graph output: a regenerable cache (AST hashes, embeddings,
+# reports) built locally from the source tree — not shared history.
+graphify-out/
+
+# Experiments harness: regenerable benchmark outputs (the README + task receipts are the tracked record)
+experiments/results/
+

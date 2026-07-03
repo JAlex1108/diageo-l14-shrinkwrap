@@ -1,0 +1,17 @@
+metric,value
+comparison_label,stop_record
+comparison_window_start,2026-06-18 22:11:06.834444444
+comparison_window_end,2026-06-20 08:05:57.833333333
+match_tolerance,0 days 00:02:00
+stop_merge_gap,0 days 00:01:00
+local_timezone,Europe/London
+extracted_filename_timestamps_treated_as_utc,True
+harford_timestamps_treated_as,local/site Excel time
+extracted_stoppage_count,257
+harford_stop_count,86
+extracted_stoppages_matched_to_harford,108
+extracted_stoppages_not_matched_to_harford,149
+harford_stops_matched_to_extracted_stoppages,64
+harford_stops_not_matched_to_extracted_stoppages,22
+extracted_stoppage_match_rate,0.42023346303501946
+harford_match_rate,0.7441860465116279

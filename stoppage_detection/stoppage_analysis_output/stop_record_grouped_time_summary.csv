@@ -1,0 +1,15 @@
+metric,value
+comparison_label,stop_record_grouped
+comparison_window_start,2026-06-18 22:11:06.834444444
+comparison_window_end,2026-06-20 08:05:57.833333333
+time_bin,1min
+grouped_extracted_stoppages_in_window,257
+harford_stops_in_window,86
+motion_rows_with_motion_detected,1019
+time_bins_in_window,2034
+time_bins_with_motion,799
+time_bins_without_motion,1235
+grouped_extracted_stop_bins,202
+harford_stop_bins,80
+peak_grouped_extracted_stops_per_bin,5
+peak_harford_stops_per_bin,2

@@ -1,0 +1,26 @@
+metric,value
+comparison_label,stop_clips_only
+comparison_window_start,2026-06-18 22:14:30.294444444
+comparison_window_end,2026-06-20 08:05:57.833333333
+match_tolerance,0 days 00:02:00
+stop_merge_gap,0 days 00:01:00
+local_timezone,Europe/London
+extracted_filename_timestamps_treated_as_utc,True
+harford_timestamps_treated_as,local/site Excel time
+extracted_stoppage_count,66
+harford_stop_count,86
+extracted_stoppages_matched_to_harford,31
+extracted_stoppages_not_matched_to_harford,35
+harford_stops_matched_to_extracted_stoppages,36
+harford_stops_not_matched_to_extracted_stoppages,50
+extracted_stoppage_match_rate,0.4696969696969697
+harford_match_rate,0.4186046511627907
+stop_clip_shared_window_start,2026-06-18 22:14:30.294444444
+stop_clip_shared_window_end,2026-06-20 08:06:07.750000
+stop_clip_harford_intervals_in_window,86
+stop_clip_extracted_intervals_in_window,66
+stop_clip_average_nearest_extracted_active_delta_seconds,441.2398406162791
+stop_clip_median_nearest_extracted_active_delta_seconds,190.522444
+stop_clip_max_nearest_extracted_active_delta_seconds,4186.120777
+stop_clip_harford_stops_with_zero_delta_to_extracted_active,2
+stop_clip_harford_stops_without_zero_delta_to_extracted_active,84

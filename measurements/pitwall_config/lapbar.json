@@ -1,0 +1,123 @@
+{
+    "roi": {
+        "enabled": true,
+        "active_rois": [
+            {
+                "id": 4,
+                "name": "Region 4",
+                "enabled": true,
+                "mode": "include",
+                "shape": "rectangle",
+                "x": 1264,
+                "y": 86,
+                "width": 215,
+                "height": 210
+            }
+        ],
+        "next_id": 5,
+        "mode": "include",
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+    },
+    "edge_detection": {
+        "enabled": false,
+        "threshold1": 0,
+        "threshold2": 0,
+        "aperture_size": 7,
+        "index": 1,
+        "source": "image"
+    },
+    "hue_detection": {
+        "enabled": true,
+        "target_hue": 0,
+        "hue_range": 10,
+        "saturation_min": 138,
+        "saturation_max": 252,
+        "value_min": 17,
+        "value_max": 255,
+        "index": 2,
+        "hue_value": 106,
+        "hue_tolerance": 47,
+        "saturation_value": 195,
+        "saturation_tolerance": 57,
+        "value_value": 148,
+        "value_tolerance": 131,
+        "hue_min": 59,
+        "hue_max": 153
+    },
+    "contour_filtering": {
+        "enabled": false,
+        "min_area": 0,
+        "max_area": 25533,
+        "min_perimeter": 0,
+        "max_perimeter": 2554,
+        "min_convexity": 0.0,
+        "max_convexity": 0.59,
+        "min_circularity": 0.0,
+        "max_circularity": 0.18,
+        "index": 3,
+        "max_aspect_ratio": 2.9,
+        "min_aspect_ratio": 0.0
+    },
+    "shape_extraction": {
+        "enabled": false,
+        "shape_type": "hough_lines",
+        "tolerance": 0.08,
+        "index": 6,
+        "harris_block_size": 7,
+        "hough_threshold": 50,
+        "hough_min_line_length": 104,
+        "hough_max_line_gap": 9
+    },
+    "template_matching": {
+        "enabled": false,
+        "template_path": "",
+        "match_threshold": 0.8,
+        "min_matches": 10
+    },
+    "app": {
+        "theme": "default",
+        "active_tab": "mask",
+        "mask_processor_order": [
+            "edge_detection",
+            "hue_detection",
+            "contour_filtering",
+            "morphology",
+            "denoising",
+            "shape_extraction"
+        ]
+    },
+    "agent": {
+        "llm_provider": "ollama"
+    },
+    "last_source": {
+        "type": "image",
+        "path": "C:/Users/TimKitchen/OneDrive/OneDrive - PurpleSector/03 Project Specific Documents/24H_INSIGHTS/24H_Insights/motion_detection/phase_aware_position_output/exported_phase_frames/phase_02__cortexvpu-01a-005-41884872_2026-06-19_03-55-24_933414__cycle_0000__original_phase_07__sample_000.png"
+    },
+    "morphology": {
+        "enabled": false,
+        "kernel_size": 1,
+        "iterations": 1,
+        "operation": "erode",
+        "index": 4
+    },
+    "denoising": {
+        "enabled": true,
+        "filter_type": "median",
+        "kernel_size": 10,
+        "sigma": 5.0,
+        "sigma_color": 0.96,
+        "sigma_space": 0.22,
+        "index": 5
+    },
+    "measurement": {
+        "enabled": false,
+        "line_coords": null
+    },
+    "insights": {
+        "text": "e",
+        "source": "user"
+    }
+}
