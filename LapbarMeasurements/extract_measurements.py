@@ -25,11 +25,12 @@ import numpy as np
 # ============================================================================
 # CONFIG — edit paths / tolerances here
 # ============================================================================
-CONFIG_JSON = Path(r"C:\Users\jkind\Documents\McLaren\Diageo_ShrinkWrap\lapbar_bottle_measurement\Lapbar+Bottles.json")
-FRAMES_DIR = Path(r"C:\Users\jkind\Documents\McLaren\Diageo_ShrinkWrap\exported_samples\phase1_to_phase2")
-OUTPUT_DIR = Path(r"C:\Users\jkind\Documents\McLaren\Diageo_ShrinkWrap\lapbar_bottle_measurement\debug_phase1_to_phase2")
-OUTPUT_JSON = Path(r"C:\Users\jkind\Documents\McLaren\Diageo_ShrinkWrap\lapbar_bottle_measurement\measurements_phase1_to_phase2.json")
-SCATTER_PNG = Path(r"C:\Users\jkind\Documents\McLaren\Diageo_ShrinkWrap\lapbar_bottle_measurement\scatter_b2x_vs_lapY_phase1_to_phase2.png")
+HERE = Path(__file__).resolve().parent
+CONFIG_JSON = HERE / "Lapbar+Bottles.json"
+FRAMES_DIR = HERE.parent / "PhaseExtraction" / "output" / "phase1_to_phase2"
+OUTPUT_DIR = HERE / "output" / "debug_phase1_to_phase2"
+OUTPUT_JSON = HERE / "output" / "measurements_phase1_to_phase2.json"
+SCATTER_PNG = HERE / "output" / "scatter_b2x_vs_lapY_phase1_to_phase2.png"
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp"}
 SAVE_DEBUG_FOR = "passes"  # "passes" | "all"
 

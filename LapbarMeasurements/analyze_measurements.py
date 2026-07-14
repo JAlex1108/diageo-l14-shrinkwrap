@@ -25,8 +25,9 @@ from scipy import stats
 # ============================================================================
 # CONFIG — edit paths / knobs here
 # ============================================================================
-MEASUREMENTS_JSON = Path(r"C:\Users\jkind\Documents\McLaren\Diageo_ShrinkWrap\lapbar_bottle_measurement\measurements_phase1_to_phase2.json")
-OUTPUT_PNG = Path(r"C:\Users\jkind\Documents\McLaren\Diageo_ShrinkWrap\lapbar_bottle_measurement\analysis_phase1_to_phase2.png")
+HERE = Path(__file__).resolve().parent
+MEASUREMENTS_JSON = HERE / "output" / "measurements_phase1_to_phase2.json"
+OUTPUT_PNG = HERE / "output" / "analysis_phase1_to_phase2.png"
 
 FPS = 30.0                 # source video frame rate, used for frame->seconds offset
 N_POSITION_BINS = 8        # equal-count bins of B2 x for the variance-vs-position model

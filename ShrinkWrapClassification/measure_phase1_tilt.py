@@ -29,7 +29,7 @@ import tilt_histograms as th
 from measure_tilt import _centroid_x, draw_debug_overlay, line_angle_deg
 from measure_tilt_phase1 import process_frame
 
-OUT = Path(__file__).parent / "phase_pipeline_out"
+OUT = Path(__file__).parent / "output"
 CLASSIFY_DIR = OUT / "classify_phase1"
 OVERLAY_DIR = OUT / "classify_phase1_overlays"
 PHASE1_JSON = OUT / "measurements_phase1.json"

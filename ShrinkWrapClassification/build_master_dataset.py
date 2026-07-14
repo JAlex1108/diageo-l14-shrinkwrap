@@ -37,7 +37,7 @@ from collections import defaultdict
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-OUT = HERE / "phase_pipeline_out"
+OUT = HERE / "output"
 SRC = HERE / "source_videos"
 
 CLASSIFICATION_JSON = OUT / "classification.json"

@@ -36,7 +36,7 @@ import re
 import shutil
 from pathlib import Path
 
-BASE = Path(__file__).resolve().parent / "phase_pipeline_out"
+BASE = Path(__file__).resolve().parent / "output"
 PHASE1_JSON = BASE / "measurements_phase1.json"
 CLASSIFY_CSV = BASE / "classify_phase1.csv"
 COMPARE_BY_CLASS = BASE / "compare_by_class"

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Phase-aware angle + classification pipeline -> ONE global, traceable dataset.
 
-Processes every .ts in source_videos/ and writes a single global dataset under phase_pipeline_out/:
+Processes every .ts in source_videos/ and writes a single global dataset under output/:
 
   measure/<minAngle>_<clip>_C<cycle>_f<frame>.png   P{MEASURE_PHASE} angle overlay (rects + angle text)
   classify_phase<p>/<clip>_C<cycle>_P<p>_f<frame>.png   context frame for looped/smooth/other
@@ -11,7 +11,7 @@ Processes every .ts in source_videos/ and writes a single global dataset under p
 
 Every row carries id = <clip>_C<cycle>, the clip timestamp, cycle, frame, and BOTH image paths, so the
 two files cross-reference each other and every image traces back to its source clip / cycle / frame.
-Image paths are relative to phase_pipeline_out/, so the dataset is portable.
+Image paths are relative to output/, so the dataset is portable.
 
 Resumable (skips clips already in measurements.json) and stops once TARGET_IMAGES is reached.
 Run with the 24H_Insights venv (fCWT + decord):
@@ -45,7 +45,7 @@ GRID_PHASES = [0, 1, 2, 3, 4, 5]   # phases shown on the per-clip grid
 GRID_CYCLES = 8
 TARGET_IMAGES = 2000      # stop once the dataset reaches this many measure rows
 KEEP_ONLY_3_STRIPS = True # drop any cycle whose measurement didn't find all 3 label strips
-OUT = HERE / "phase_pipeline_out"
+OUT = HERE / "output"
 MEASURE_DIR = OUT / "measure"
 GRID_DIR = OUT / "grids"
 

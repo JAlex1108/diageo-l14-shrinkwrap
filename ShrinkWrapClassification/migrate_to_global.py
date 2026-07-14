@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""One-off: migrate existing per-clip phase_pipeline_out/<clip>/ outputs into the global dataset.
+"""One-off: migrate existing per-clip output/<clip>/ outputs into the global dataset.
 
 Moves every image into the pooled global folders with traceable names and writes the global
 measurements/classification files, rewriting all paths via the same helpers the pipeline uses so

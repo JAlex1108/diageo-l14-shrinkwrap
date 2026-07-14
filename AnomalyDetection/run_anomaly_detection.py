@@ -25,8 +25,8 @@ from VideoModule.pipelines.anomaly_detection.video_anomaly_detection_pipeline im
 
 HERE = Path(__file__).resolve().parent
 ANCHOR = HERE / "phase_anchor_41884872.png"
-OUT = HERE / "anomaly_out"
-LOCAL_FOLDER = HERE.parent / "ShrinkWrapClassificationTiltMeasurement" / "source_videos"
+OUT = HERE / "output"
+LOCAL_FOLDER = HERE.parent / "ShrinkWrapClassification" / "source_videos"
 
 # The maintained preset, with the ONLY override the pip install forces: CORTEX_SIDEVIEW_CONFIG
 # bakes the anchor path into the 24H repo root, which doesn't exist inside the installed package —

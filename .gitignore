@@ -23,26 +23,24 @@ dist/
 *.webm
 
 # --- Generated pipeline outputs / artefacts ---
-AnomalyDetection/anomaly_out/
-ShrinkWrapClassificationTiltMeasurement/phase_pipeline_out/
+# Every analysis folder keeps its generated artefacts in its own output/ folder.
+# (Tracked result images that were git-mv'd into an output/ folder stay tracked —
+# gitignore only hides new files.)
 output/
 *.zip
 
-# NOTE: phase_anchor_41884872.png is intentionally NOT ignored — the anomaly
-# script needs it, so it is tracked (only ~1.8 MB).
+# NOTE: AnomalyDetection/phase_anchor_41884872.png is intentionally NOT ignored — the
+# anomaly script needs it, so it is tracked (only ~1.8 MB).
+
+# --- Raw data / example footage ---
+ShrinkWrapClassification/failure_mode_examples/
 
 # --- DataFiles ---
 docs/tasks/*
 *.csv
 *.pdf
-*.json
 
 # --- OS / editor cruft ---
 .DS_Store
 Thumbs.db
 *.swp
-lapbar_bottle_measurement/debug_phase1_to_phase2/
-lapbar_bottle_measurement/debug_phase2/
-diageo_failuremodes/
-exported_samples/
-stoppage_detection/

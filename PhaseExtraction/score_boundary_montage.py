@@ -10,7 +10,7 @@ SP = Path(__file__).parent
 sys.path.insert(0, str(SP))
 from export_phase_samples import score_against_phase_template   # noqa: E402
 
-CACHE = Path(r"C:\Users\jkind\Documents\McLaren\Diageo_ShrinkWrap\exported_samples\_pass1_cache.npz")
+CACHE = SP / "output" / "_pass1_cache.npz"
 z = np.load(CACHE, allow_pickle=False)
 N_TILES = 18
 

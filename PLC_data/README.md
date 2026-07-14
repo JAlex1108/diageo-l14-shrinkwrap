@@ -1,4 +1,4 @@
-# PLC_fetching
+# PLC_data
 
 Stream live signals off the L14 shrink-wrapper PLC (a Siemens S7-300) into a
 rolling CSV you can analyse later. One script connects over the network, reads
@@ -27,9 +27,10 @@ once the folder passes a size cap, so it can run forever without filling the dis
 | `L14_shrinkwrapper_symbol_table_EN.csv` | The **source of truth**: every named PLC signal with `Symbol, Address, DataType, Comment_EN`. This is what decides which fields exist. |
 | `L14_subset.csv` | A trimmed symbol table (same format) — a hand-picked shortlist if you only want a few signals. |
 | `header_map.csv` | Optional `Address,Header` overrides to rename CSV columns to friendlier names. |
-| `output.csv` | An example of what the logger produces (one `timestamp` column + one column per signal). |
+| `example_output.csv` | An example of what the logger produces (one `timestamp` column + one column per signal). |
 | `L14 shrinkwrapper symbol table.pdf` | The original symbol table from the machine builder, before it was turned into the CSV. |
-| `requirements.txt` | The single dependency: `python-snap7`. |
+| `output/` | Where captured logs land: rolling `plc_00000001.csv`, `plc_00000002.csv`, … plus earlier capture sessions. |
+| `../requirements.txt` | Repo-level dependencies; the logger itself only needs `python-snap7`. |
 
 ---
 
@@ -44,7 +45,7 @@ python plc_comms.py --heartbeat 300     # also write one "still alive" row every
 python plc_comms.py --symbols L14_subset.csv   # log only the shortlist
 ```
 
-Stop with `Ctrl+C`. Data lands in the `plc_data/` folder as `plc_00000001.csv`,
+Stop with `Ctrl+C`. Data lands in this folder's `output/` as `plc_00000001.csv`,
 `plc_00000002.csv`, … When the folder passes `--max-mb` (default 100 MB) the
 oldest file is deleted.
 

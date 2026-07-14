@@ -2,8 +2,10 @@
 
 Tools for pulling frames out of the side-view shrink-wrapper videos (camera 41884872) at a
 chosen point in the machine cycle. Built 2026-07-13 in the 24H_Insights session that produced
-`../exported_samples`; they run against the 24H_Insights library (hardcoded path inside each
-script) but are Diageo-specific, so they live here.
+`output/` (formerly the repo-root `exported_samples/`); they run against the 24H_Insights
+library (hardcoded path inside each script) but are Diageo-specific, so they live here.
+The list of clips worth sampling comes from the stoppage analysis's pooled coverage log
+(`../Stoppage_detection/output/out_normed_diageo/pooled/runs/2026-07-06/`).
 
 ## The anchor images (essential)
 
@@ -25,22 +27,22 @@ anchor, change it there and keep a named copy here.
 ## Scripts
 
 - `export_phase_samples.py` — the main exporter. Samples verified-cycling clips evenly across
-  a day (S3, clips cached in `../exported_samples/_ts_cache`), assigns each frame a phase with
+  a day (S3, clips cached in `output/_ts_cache`), assigns each frame a phase with
   the anchor, and exports N full-resolution frames per phase, evenly spread over the day.
   Frames without bottles (line cycling empty) are dropped by a similarity check: each frame is
   scored against its phase's median appearance using only the pixels that vary between cycles
   (the bottle/film region — whole-frame scores are blinded by the static machinery), with an
-  automatic per-phase pass floor. Produced `../exported_samples/phase0..phase4` (1000 frames,
+  automatic per-phase pass floor. Produced `output/phase0..phase4` (1000 frames,
   200/phase) + `manifest.json` / `manifest.csv` (image name -> source video, cycle, phase,
   frame number, time in clip, similarity score).
 - `export_phase1_to_phase2.py` — per cycle, 5 evenly spaced frames spanning phase 1 -> phase 2
-  (the lap bar rising). Produced `../exported_samples/phase1_to_phase2` (2,240 frames, 448
+  (the lap bar rising). Produced `output/phase1_to_phase2` (2,240 frames, 448
   cycles) with its own manifests. Reuses the main exporter's cached pass-1 data
-  (`../exported_samples/_pass1_cache.npz`), so it needs no re-download.
+  (`output/_pass1_cache.npz`), so it needs no re-download.
 - `cycle_montage.py` — 12 labelled frames across one machine cycle; how the bottles-entering
   anchor frame was chosen.
 - `score_boundary_montage.py` — candidate crops ranked by similarity score per phase; how the
   empty-belt pass floors were verified by eye.
 
 The lap-bar measurement work that consumes `phase1_to_phase2` lives in
-`../lapbar_bottle_measurement`.
+`../LapbarMeasurements`.

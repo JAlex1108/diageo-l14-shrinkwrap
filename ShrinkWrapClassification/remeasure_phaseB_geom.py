@@ -38,7 +38,7 @@ import tilt_histograms as th
 # so --from-geom re-rendering works in environments without decord installed.
 
 HERE = Path(__file__).resolve().parent
-OUT = HERE / "phase_pipeline_out"
+OUT = HERE / "output"
 SRC = HERE / "source_videos"
 MEASUREMENTS_JSON = OUT / "measurements.json"
 GEOM_JSON = OUT / "measurements_phaseB_geom.json"

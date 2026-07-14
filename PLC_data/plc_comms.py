@@ -72,7 +72,9 @@ from snap7.client import Client
 DEFAULT_IP = "200.200.5.1"
 DEFAULT_RACK = 0
 DEFAULT_SLOT = 2  # S7-300 CPU is in slot 2 (slot 1 = power supply)
-DEFAULT_SYMBOLS = "L14_shrinkwrapper_symbol_table_EN.csv"
+_HERE = Path(__file__).resolve().parent
+DEFAULT_SYMBOLS = str(_HERE / "L14_shrinkwrapper_symbol_table_EN.csv")
+DEFAULT_DATA_DIR = _HERE / "output"   # captured CSV logs land here regardless of cwd
 
 # --- S7 memory area codes -------------------------------------------------
 # Prefer the library's Area enum; fall back to raw S7 codes if absent.
@@ -486,7 +488,7 @@ def stream(
     ip: str = DEFAULT_IP,
     rack: int = DEFAULT_RACK,
     slot: int = DEFAULT_SLOT,
-    directory: str | Path = "plc_data",
+    directory: str | Path = DEFAULT_DATA_DIR,
     interval: float = 1.0,
     max_mb: float = 100.0,
     segment_mb: Optional[float] = None,
@@ -573,7 +575,7 @@ def _parse_args() -> argparse.Namespace:
     p.add_argument("--rack", type=int, default=DEFAULT_RACK)
     p.add_argument("--slot", type=int, default=DEFAULT_SLOT)
     p.add_argument("--symbols", default=DEFAULT_SYMBOLS, help="symbol table CSV")
-    p.add_argument("--dir", dest="directory", default="plc_data", help="data directory")
+    p.add_argument("--dir", dest="directory", default=DEFAULT_DATA_DIR, help="data directory")
     p.add_argument("--interval", type=float, default=1.0, help="poll interval (s)")
     p.add_argument("--max-mb", type=float, default=100.0, help="total storage cap (MB)")
     p.add_argument("--segment-mb", type=float, default=None, help="size per CSV segment (MB)")

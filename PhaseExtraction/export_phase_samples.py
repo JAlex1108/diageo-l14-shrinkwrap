@@ -44,11 +44,15 @@ from VideoModule.pipelines.anomaly_detection.src.scoring_grid import _load_refer
 from VideoModule.pipelines.anomaly_detection.video_anomaly_detection_pipeline import (  # noqa: E402
     CORTEX_SIDEVIEW_CONFIG, NOTEBOOK_ROI)
 
-COVERAGE_LOG = REPO / "out_normed_diageo" / "pooled" / "runs" / "2026-07-06" / "anomaly_coverage_log.csv"
+HERE = Path(__file__).resolve().parent
+# The pooled-run coverage log lives in this repo's stoppage analysis (moved from 24H_Insights
+# on 2026-07-13) — it is the list of clips verified as cycling.
+COVERAGE_LOG = (HERE.parent / "Stoppage_detection" / "output" / "out_normed_diageo"
+                / "pooled" / "runs" / "2026-07-06" / "anomaly_coverage_log.csv")
 # Keep every complete cycle (no 5% edge trim) — the same setting the pooled run used when it
 # verified these clips as cycling, so we recover the same ~3 cycles per short clip.
 CFG = CORTEX_SIDEVIEW_CONFIG.replace(cycle_extraction_config={"edge_trim_fraction": 0.0})
-OUT_ROOT = Path(r"C:\Users\jkind\Documents\McLaren\Diageo_ShrinkWrap") / "exported_samples"
+OUT_ROOT = HERE / "output"
 CROP_SIZE = (256, 160)          # (w, h) of the grayscale ROI crop used for the NCC check
 JPEG_QUALITY = 95
 

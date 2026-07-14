@@ -27,7 +27,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-OUT = Path(__file__).parent / "phase_pipeline_out"
+OUT = Path(__file__).parent / "output"
 MEASUREMENTS_JSON = OUT / "measurements.json"
 CLASSIFY_CSV = OUT / "classify_phase1.csv"
 PHASE_B_OUT = OUT / "hist_phaseB_measurements.png"

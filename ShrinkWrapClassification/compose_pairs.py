@@ -35,7 +35,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-BASE = Path(__file__).resolve().parent / "phase_pipeline_out"
+BASE = Path(__file__).resolve().parent / "output"
 CLASSIFICATION_JSON = BASE / "classification.json"
 MEASUREMENTS_JSON = BASE / "measurements.json"
 CLASSIFY_CSV = BASE / "classify_phase1.csv"
