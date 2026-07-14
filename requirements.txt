@@ -3,11 +3,15 @@
 python-snap7>=2.0.0
 
 # VideoModule (CV/ML toolkit: phase-aware anomaly detection, embeddings, OCR, ...).
-# Pinned to a fixed commit for repeatability — a bare branch ref would drift.
-# To update: bump the SHA below (or, once the 24H repo is tagged, use @v2.4.0).
+# Tracks the `develop` branch to follow the latest — deliberately NOT a fixed commit, so builds
+# are not byte-reproducible: a fresh install gets whatever develop points at that moment.
+# GOTCHA: once videomodule is installed, `pip install -r requirements.txt` treats it as already
+# satisfied and will NOT re-pull develop. To actually grab the newest develop commit, force it
+# (--no-deps so the heavy torch/CV stack isn't reinstalled):
+#   pip install --force-reinstall --no-deps "videomodule @ git+https://github.com/Purple-Sector/24H_Insights.git@develop"
 # For side-by-side dev on both repos instead, use an editable local install:
 #   pip install -e C:/Users/jkind/Documents/McLaren/24H_Insights
-videomodule @ git+https://github.com/Purple-Sector/24H_Insights.git@513c0914c2175a501412b6fd166f610ba023fd73
+videomodule @ git+https://github.com/Purple-Sector/24H_Insights.git@develop
 
 # Undeclared transitive dep of videomodule: it hard-imports hdbscan via
 # statistical_analysis.clustering, but its pyproject.toml doesn't list it. Pin here so the

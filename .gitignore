@@ -41,3 +41,8 @@ docs/tasks/*
 .DS_Store
 Thumbs.db
 *.swp
+lapbar_bottle_measurement/debug_phase1_to_phase2/
+lapbar_bottle_measurement/debug_phase2/
+diageo_failuremodes/
+exported_samples/
+stoppage_detection/
