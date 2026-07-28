@@ -29,6 +29,40 @@ dist/
 output/
 *.zip
 
+# --- Stoppage detection/classification local artefacts ---
+# Keep the workflow notebooks in Git, but keep copied datasets, trained models,
+# generated results, reference assets, and downloaded media local.
+stoppage_detection_and_classification/**/data/
+stoppage_detection_and_classification/**/models/
+stoppage_detection_and_classification/**/output/
+
+# --- Large ML/data binaries ---
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.engine
+*.tflite
+*.safetensors
+*.joblib
+*.pkl
+*.pickle
+*.npz
+*.npy
+*.h5
+*.hdf5
+*.parquet
+*.feather
+*.cache
+
+# --- Archives and compressed datasets ---
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.tgz
+*.gz
+
 # NOTE: AnomalyDetection/phase_anchor_41884872.png is intentionally NOT ignored — the
 # anomaly script needs it, so it is tracked (only ~1.8 MB).
 
